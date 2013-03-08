@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Classes\AddressWatcher.cs" />
     <Compile Include="Classes\BitcoinDaemonManager.cs" />
+    <Compile Include="Classes\FastRandom.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\Transaction.cs" />
     <Compile Include="Classes\BettingManager.cs" />

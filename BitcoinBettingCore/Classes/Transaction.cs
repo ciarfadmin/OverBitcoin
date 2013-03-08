@@ -3,23 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bitnet.Client;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace BitcoinBettingCore.Classes
 {
     internal class Transaction
     {
-        public string account;
-        public string address;
-        public string category;
-        public float amount;
-        public float fee;
-        public int confirmations;
-        public string blockhash;
-        public int blockindex;
-        public int blocktime;
-        public string txid;
-        public int time;
-        public int timereceived;
+        [BsonElement("_id"), BsonId]
+        internal ObjectId Id { get; set; }
+        [BsonElement("Account")]
+        public string account { get; set; }
+        [BsonElement("Account")]
+        public string address { get; set; }
+        [BsonElement("Account")]
+        public string category { get; set; }
+        [BsonElement("Account")]
+        public float amount { get; set; }
+        [BsonElement("Account")]
+        public float fee { get; set; }
+        [BsonElement("Account")]
+        public int confirmations { get; set; }
+        [BsonElement("Account")]
+        public string blockhash { get; set; }
+        [BsonElement("Account")]
+        public int blockindex { get; set; }
+        [BsonElement("Account")]
+        public int blocktime { get; set; }
+        [BsonElement("Account")]
+        public string txid { get; set; }
+        [BsonElement("txid")]
+        public int time { get; set; }
+        [BsonElement("time")]
+        public int timereceived { get; set; }
+        [BsonElement("timereceived")]
 
         /// <summary>
         /// Give us the Address of a transaction

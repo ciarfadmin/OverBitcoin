@@ -60,18 +60,13 @@ namespace BitcoinBettingCore.Classes
                 Console.WriteLine(tr.txid + " -- " + tr.amount);
                 watcher.Game.LastTimeReceived = tr.timereceived;
 
-
                 var query = Query.EQ("_id", watcher.Game.Id);
                 var entity = games.FindOne(query);
+                double prizeAmmount = entity.getBetResult(tr.amount);
                 entity.LastTimeReceived = tr.timereceived;
                 games.Save(entity);
-                
-                //var query = new Query.EQ("_id", "123");
-                //var sortBy = SortBy.Null;
-                //var update = Update.Inc("LoginCount", 1).Set("LastLogin", DateTime.UtcNow); // some update
-                //MongoCollection<User>.FindAndModify(query, sortby, update); 
-
-                //bitnetClient.SendFrom(watcher.AddressLabel, address, tr.amount,0,"DICE TEST");
+                //Finally we send the prize ammount
+                bitnetClient.SendFrom(watcher.AddressLabel, address, tr.amount, 0, "DICE BET");
             }
         }
 

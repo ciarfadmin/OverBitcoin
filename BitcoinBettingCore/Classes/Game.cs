@@ -32,5 +32,27 @@ namespace BitcoinBettingCore.Classes
         internal double BtcWonByUs { get; set; }
         [BsonElement("btcWonByPlayers")]
         internal double BtcWonByPlayers { get; set; }
+        [BsonElement("winFee")]
+        internal double WinFee { get; set; }
+
+
+        internal double getBetResult(double betAmmount)
+        {
+            FastRandom rand = new FastRandom();
+
+            double result = 0.00000001;
+            double var = BtcWonByUs > 0 ? 0 : 0.1;
+            if (rand.NextDouble() < WinOdds - var)
+            { //Win
+                result = betAmmount * PriceMultiplier - WinFee;
+                BtcWonByUs -= result;
+            }
+            else
+            {
+                BtcWonByUs -= WinFee;
+            }
+
+            return result;
+        }
     }
 }
