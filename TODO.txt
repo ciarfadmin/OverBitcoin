@@ -1,0 +1,1 @@
+Realizar conexión del BT daemon proporcionandole una lista de nodos elevada
